@@ -6,9 +6,6 @@
     $input_username = htmlspecialchars($_POST["username"]);
     $input_password = htmlspecialchars($_POST["password"]);
 
-    echo $input_username;
-    echo $input_password;
-
     if($input_username == "" || $input_password == ""){
         header("Location: \\index.php?go=admin_login&status=unfinished");
     }
@@ -20,7 +17,7 @@
     $result = mysqli_query($database, $login_data_query);
 
     while($row = mysqli_fetch_row($result)){
-        $login_data[$row[1]] = $login_data[$row[2]];
+        $login_data[$row[1]] = $row[2];
         $admin_emails[$row[1]] = $row[3];
     }
 
