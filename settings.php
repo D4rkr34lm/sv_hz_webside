@@ -11,7 +11,7 @@
     <div class='article_container'>
         <h3 class='article_header'>#1</h3>
         <div class='article_content'>#2</div>
-        <p class='article_metadata'>Geschrieben von <a href='mailto:#4'>#3</a> am #5 um #6</p>
+        <p class='article_metadata'>Geschrieben von <a href='mailto:#4'>#3</a> am #5 um #6 <a href='index.php?go=news&id=#0' class='single_view_link'>Einzelansicht &raquo</a></p>
     </div>"; 
     $max_direct_navigation_links = 3; 
     $target_side = "index.php";

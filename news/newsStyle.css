@@ -19,3 +19,17 @@ h2{
     background-color: rgb(230, 230, 230);
     padding: 4px;
 }
+
+#navigation_bar_container{
+    text-align: center;
+}
+
+#single_article_back_link{
+    text-decoration: none;
+}
+
+.single_view_link{
+    float: right;
+    text-decoration: none;
+}
+    

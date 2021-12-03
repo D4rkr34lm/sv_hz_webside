@@ -37,7 +37,7 @@
         }
 
         for($n = count($article_data) - 1; $n > -1; $n--){
-            echo construct_article($article_data[$n]);
+            echo construct_article($article_data[$n], "list");
         }
 
         echo construct_navigation_bar($side_index, $side_count);
@@ -45,10 +45,29 @@
         mysqli_close($database);
     }
 
-    function construct_article($data){
+    function display_article($id){
+        global $db_host, $db_username, $db_pw, $db_name;
+
+        $database = mysqli_connect($db_host, $db_username, $db_pw, $db_name);
+
+        $article_data_query = "SELECT * FROM news WHERE id = " . strval($id);
+
+        $result = mysqli_query($database, $article_data_query);
+
+        $article_data = mysqli_fetch_row($result);
+
+        echo construct_article($article_data, "single"); 
+        echo "<a href='index.php?go=news' id='single_article_back_link'>&laquo Zurück zu den News </a>";
+    }
+
+    function construct_article($data, $view_mode){
         global $article_template;
 
         $article = $article_template;
+
+        if(strcmp($view_mode, "single") == 0){
+            $article = str_replace("<a href='index.php?go=news&id=#0' class='single_view_link'>Einzelansicht &raquo</a>","",$article);
+        }
 
         for($n = 0; $n < count($data); $n++){
             $search_val = "#" . strval($n);
@@ -61,7 +80,6 @@
     function construct_navigation_bar($side_index, $side_count){
 
         global $max_direct_navigation_links, $target_side;
-
 
         $navigation_bar_container = "<div id='navigation_bar_container'>Seiten: #</div>";
         $all_back_link = "<a class='navigation_link' href='". $target_side ."?go=news&side=§'>&laquo;</a>";

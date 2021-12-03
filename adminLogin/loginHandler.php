@@ -24,7 +24,7 @@
         $admin_emails[$row[1]] = $row[3];
     }
 
-    if(key_exists($input_username, $login_data) && strcmp($login_data[$input_username], $input_password)){
+    if(key_exists($input_username, $login_data) && strcmp($login_data[$input_username], $input_password) == 0){
         $_SESSION["admin_login_status"] = true;
         $_SESSION["admin_name"] = $input_username;
         $_SESSION["admin_email"] = $admin_emails[$input_username];
