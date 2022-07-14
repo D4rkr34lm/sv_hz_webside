@@ -3,11 +3,7 @@ body{
     padding: 10px;
 }
 
-h2{
-    text-align: center;
-}
-
-.article_container{
+article{
     background-color: white;
     border: 2px solid rgb(220, 220, 220);
     margin-bottom: 40px;
@@ -20,6 +16,11 @@ h2{
     padding: 4px;
 }
 
+.single_view_link{
+    float: right;
+    text-decoration: none;
+}
+
 #navigation_bar_container{
     text-align: center;
 }
@@ -28,8 +29,12 @@ h2{
     text-decoration: none;
 }
 
-.single_view_link{
+#edit_link{
+    text-decoration: none;
     float: right;
+}
+
+#new_link{
     text-decoration: none;
 }
     

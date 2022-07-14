@@ -1,4 +1,6 @@
 <?php 
+    session_start();
+
     require "settings.php";
 
     function display_side($side_index){
@@ -42,6 +44,10 @@
 
         echo construct_navigation_bar($side_index, $side_count);
 
+        if(array_key_exists("admin_login_status", $_SESSION) && $_SESSION["admin_login_status"]){
+            echo "<a href='index.php?go=news_editor&id=new' id='new_link'>Neuen Artikel hinzufügen</a>";
+        }
+
         mysqli_close($database);
     }
 
@@ -58,6 +64,13 @@
 
         echo construct_article($article_data, "single"); 
         echo "<a href='index.php?go=news' id='single_article_back_link'>&laquo Zurück zu den News </a>";
+
+        if(array_key_exists("admin_login_status", $_SESSION) && $_SESSION["admin_login_status"]){
+            $edit_link = "<a href='index.php?go=news_editor&id=" . strval($id) . "' id='edit_link'>Bearbeiten</a>";
+            echo $edit_link;
+        }
+
+        mysqli_close($database);
     }
 
     function construct_article($data, $view_mode){

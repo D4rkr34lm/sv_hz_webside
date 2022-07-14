@@ -4,7 +4,7 @@
         <link rel="stylesheet" href="news\\newsStyle.css">
     </head>
     <body>
-        <?php include "news.functions.php";
+        <?php require "news.functions.php";
             if(key_exists("side", $_GET)){
                 display_side($_GET["side"]);
             }
